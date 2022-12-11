@@ -20,4 +20,4 @@ jobs:
     - name: Depoly S3
       env:
         BUCKET_NAME: web-site-01
-      run: aws s3 cp index.html s3://$BUCKET
+      run: aws s3 cp index.html s3://$BUCKET_NAME
