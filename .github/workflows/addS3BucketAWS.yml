@@ -4,17 +4,20 @@ on:
     branches:
       - master
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  job_1:
+    runs-on: ubuntu latest
     steps:
-      - name: Print Boas vindas
-        run: echo "Ola pessoalll, agora foi?"
-    ##  - uses: actions/checkout@v2
-    #  - name: Set AWS Credentials
-     #         with:
-      #          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-       
-       #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        #        AWS_DEFAULT_REGION: 'us-east-1'
-     # - name: Copy to S3
-     #  run: aws s3 sync ./build/. s3://web-site-01
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACESS_KEY }}
+        aws-region: us-east-1
+    
+    - name: Depoly S3
+      env:
+        BUCKET_NAME: web-site-01
+      run: aws s3 cp index.html s3://$BUCKET_NAME
