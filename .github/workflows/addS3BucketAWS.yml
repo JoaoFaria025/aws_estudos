@@ -18,6 +18,6 @@ steps:
         run: |
           aws s3 mb s3://<teste_aws_estudos>
         env:
-          AWS_ACCESS_KEY_ID: ${{ AKIAXHH4VF5LO76Y2J5M }}
-          AWS_SECRET_ACCESS_KEY: ${{ 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 }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'eu-ssssssssswest-1'
